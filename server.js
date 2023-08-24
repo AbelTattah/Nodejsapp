@@ -75,9 +75,9 @@ app.post ('/student', async(req,res) =>
     res.status(500).json({message:error.message})
    }
 })
-app.get('/student',async(req,res)=>{
+app.get('/',async(req,res)=>{
     try{
-const products = await Student.find({});
+const products = await Product.find({});
 res.status(200).json(products);
     }
     catch (error) {
