@@ -75,6 +75,17 @@ app.post ('/student', async(req,res) =>
     res.status(500).json({message:error.message})
    }
 })
+
+app.get('/students',async(req,res)=>{
+    try{
+const products = await Student.find({});
+res.status(200).json(products);
+    }
+    catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+
 app.get('/',async(req,res)=>{
     try{
 const products = await Product.find({});
