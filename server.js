@@ -25,7 +25,7 @@ app.get('/Hiii',(req,res) =>
 
 
 
-mongoose.connect(MONGO_URI,{
+mongoose.connect('mongodb+srv://tattahabelk:Abel1919@cluster0.bkxk0nq.mongodb.net/',{
 })
 .then(()=>{
     console.log('Connected to MongoDB')}
