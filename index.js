@@ -3,6 +3,7 @@ const app =express()
 const mongoose = require('mongoose')
 const Product = require('./models/productModel')
 const Student = require('./models/studentModel')
+const Studentupdate =require('./models/studentUpdate')
 
 //routes
 app.use(express.json())
@@ -97,6 +98,26 @@ res.status(200).json(products);
 })
 
 
+app.post ('/studentupdate', async(req,res) =>
+{
+   try {
+  const product = await Studentupdate.create(req.body)
+  res.status(200).json(product);
+   } catch (error) {
+    console.log(error.message);
+    res.status(500).json({message:error.message})
+   }
+})
+
+app.get('/studentcomment',async(req,res)=>{
+    try{
+const products = await Studentupdate.find({});
+res.status(200).json(products);
+    }
+    catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
 
 
 app.listen(3000,()=>{
