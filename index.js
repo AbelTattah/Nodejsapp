@@ -111,7 +111,7 @@ app.post ('/studentupdate', async(req,res) =>
 
 app.get('/studentupdates',async(req,res)=>{
     try{
-        const product = await Studentupdate.create(req.body)
+        const product = await Studentupdate.find({})
         res.status(200).json(product);
     }
     catch (error) {
