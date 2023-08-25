@@ -134,7 +134,7 @@ app.post ('/timetables', async(req,res) =>
 
 app.get('/timetables',async(req,res)=>{
     try{
-const timetablee = await Product.find({});
+const timetablee = await timetable.find({});
 res.status(200).json(timetablee);
     }
     catch (error) {
