@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const Product = require('./models/productModel')
 const Student = require('./models/studentModel')
 const Studentupdate =require('./models/studentUpdate')
+const timetable = require('./models/timetableModel')
+
 
 //routes
 app.use(express.json())
@@ -118,6 +120,28 @@ app.get('/studentupdates',async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
+
+app.post ('/timetables', async(req,res) =>
+{
+   try {
+  const timetablee = await timetable.create(req.body)
+  res.status(200).json(timetablee);
+   } catch (error) {
+    console.log(error.message);
+    res.status(500).json({message:error.message})
+   }
+})
+
+app.get('/timetables',async(req,res)=>{
+    try{
+const timetablee = await Product.find({});
+res.status(200).json(timetablee);
+    }
+    catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+
 
 
 app.listen(3000,()=>{
