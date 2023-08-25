@@ -134,8 +134,8 @@ app.post ('/timetables', async(req,res) =>
 
 app.get('/timetable',async(req,res)=>{
     try{
-const timetable = await timetable.find({});
-res.status(200).json(timetable);
+const timetablee = await timetable.find({});
+res.status(200).json(timetablee);
     }
     catch (error) {
         res.status(500).json({message:error.message})
