@@ -183,6 +183,36 @@ async(req,res)=> {
     }
 }
 )
+//Update data
+app.put('/updattes/:SName',
+async(req,res)=> {
+    try {
+        const {SName} =req.params;
+        const updatte = await Updatte.findByIdAndUpdate(SName,req.body) 
+        if(!updatte) {
+            return res.status(404).json({message:`Cannot find Name :${SName}`})
+        }
+        const updattee =  await Updatte.findById(SName);
+        res.status(200).json(updattee)
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+)
+
+app.delete('/updattes/:id',async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const product = await Updatte.findByIdAndDelete(id);
+        if(!product){
+            return res.status(404).json({message:`cannot find product${id}`})
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+
 
 
 
