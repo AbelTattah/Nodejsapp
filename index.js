@@ -176,7 +176,8 @@ async(req,res)=> {
         if(!updatte) {
             return res.status(404).json({message:`Cannot find Name :${SName}`})
         }
-        res.status(200).json(updatte)
+        const updattee =  await Updatte.findById(SName);
+        res.status(200).json(updattee)
     } catch (error) {
         res.status(500).json({message:error.message})
     }
