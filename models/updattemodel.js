@@ -8,7 +8,7 @@ const updatteSchema = mongoose.Schema(
     {
 
         Postt:{
-            type:text,
+            type:String,
             required:true
         },
         Commentt:{
@@ -20,8 +20,8 @@ const updatteSchema = mongoose.Schema(
             required:true,
             default:0
         },
-        Name: {
-            type:text,
+        SName: {
+            type:String,
             required:true
         },
      
