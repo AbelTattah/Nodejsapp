@@ -168,7 +168,7 @@ res.status(200).json(updatte);
 })
 
 //Update an update
-app.put('updattes/:SName',
+app.put('/updattes/:SName',
 async(req,res)=> {
     try {
         const {SName} =req.params;
