@@ -167,6 +167,22 @@ res.status(200).json(updatte);
     }
 })
 
+//Update an update
+app.put('updattes/:SName',
+async(req,res)=> {
+    try {
+        const {SName} =req.params;
+        const updatte = await Updatte.findByIdAndUpdate(SName,req.body) 
+        if(!updatte) {
+            return res.status(404).json({message:`Cannot find Name :${SName}`})
+        }
+        res.status(200).json(updatte)
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+)
+
 
 
 app.listen(3000,()=>{
