@@ -6,6 +6,7 @@ const Student = require('./models/studentModel')
 const Studentupdate =require('./models/studentUpdate')
 const timetable = require('./models/timetableModel')
 const Updatte = require('./models/updattemodel')
+const Buddy = require('./models/buddyModel')
 
 //routes
 app.use(express.json())
@@ -213,6 +214,41 @@ app.delete('/updattes/:id',async(req,res)=>{
     }
 })
 
+
+
+
+
+app.post ('/buddy', async(req,res) =>
+{
+   try {
+  const buddy = await Buddy.create(req.body)
+  res.status(200).json(buddy);
+   } catch (error) {
+    console.log(error.message);
+    res.status(500).json({message:error.message})
+   }
+})
+app.get('/buddy',async(req,res)=>{
+    try{
+const buddy = await Buddy.find({});
+res.status(200).json(buddy);
+    }
+    catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+app.delete('/buddy/:id',async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const buddy = await Buddy.findByIdAndDelete(id);
+        if(!buddy){
+            return res.status(404).json({message:`cannot find student${id}`})
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
 
 
 
