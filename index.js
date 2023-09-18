@@ -4,9 +4,12 @@ const mongoose = require('mongoose')
 const Product = require('./models/productModel')
 const Student = require('./models/studentModel')
 const Studentupdate =require('./models/studentUpdate')
-const Timetable = require('./models/timetableModel')
+const timetable = require('./models/timetableModel')
 const Updatte = require('./models/updattemodel')
 const Buddy = require('./models/buddyModel')
+const UpdateReciever = require('./models/updateReciever')
+const UpdateSender = require('./models/updateSender')
+
 
 //routes
 app.use(express.json())
@@ -125,17 +128,17 @@ app.get('/studentupdate',async(req,res)=>{
 app.post ('/timetables', async(req,res) =>
 {
    try {
-  const timetablee = await Timetable.create(req.body)
-  res.status(200).json(timetablee);
+  const timetable = await timetable.create(req.body)
+  res.status(200).json(timetable);
    } catch (error) {
     console.log(error.message);
     res.status(500).json({message:error.message})
    }
 })
 
-app.get('/timetables',async(req,res)=>{
+app.get('/timetable',async(req,res)=>{
     try{
-const timetable = await Timetable.find({});
+const timetable = await timetable.find({});
 res.status(200).json(timetable);
     }
     catch (error) {
@@ -167,6 +170,88 @@ res.status(200).json(updatte);
         res.status(500).json({message:error.message})
     }
 })
+
+
+//Update Sender
+app.post ('/updateSender', async(req,res) =>
+{
+   try {
+  const updatesend = await UpdateSender.create(req.body)
+  res.status(200).json(updatesend);
+   } catch (error) {
+    console.log(error.message);
+    res.status(500).json({message:error.message})
+   }
+})
+
+app.get('/updateSender',async(req,res)=>{
+    try{
+const updatesend = await UpdateSender.find({});
+res.status(200).json(updatesend);
+    }
+    catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+
+app.delete('/updatesender/:id',async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const product = await UpdateSender.findByIdAndDelete(id);
+        if(!product){
+            return res.status(404).json({message:`cannot find product${id}`})
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+//Update Reciever
+
+app.post ('/updateReciever', async(req,res) =>
+{
+   try {
+  const updaterecieve = await UpdateReciever.create(req.body)
+  res.status(200).json(updaterecieve);
+   } catch (error) {
+    console.log(error.message);
+    res.status(500).json({message:error.message})
+   }
+})
+
+app.get('/updateReciever',async(req,res)=>{
+    try{
+const updaterecieve = await UpdateReciever.find({});
+res.status(200).json(updaterecieve);
+    }
+    catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+
+app.delete('/updatereciever/:id',async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const product = await UpdateReciever.findByIdAndDelete(id);
+        if(!product){
+            return res.status(404).json({message:`cannot find product${id}`})
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+
+
+
+
+
+
+
+
+
 
 //Update an update
 app.put('/updattes/:SName',
@@ -218,16 +303,7 @@ app.delete('/updattes/:id',async(req,res)=>{
 
 
 
-app.post ('/buddy', async(req,res) =>
-{
-   try {
-  const buddy = await Buddy.create(req.body)
-  res.status(200).json(buddy);
-   } catch (error) {
-    console.log(error.message);
-    res.status(500).json({message:error.message})
-   }
-})
+
 app.get('/buddy',async(req,res)=>{
     try{
 const buddy = await Buddy.find({});
