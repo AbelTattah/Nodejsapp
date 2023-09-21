@@ -8,7 +8,7 @@ const updateReciever = mongoose.Schema(
     {
 
         Update:{
-            type:String,
+            type:Array,
             required:true
         },
         SID:{

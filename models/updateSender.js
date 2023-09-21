@@ -5,10 +5,12 @@ const mongoose = require('mongoose')
 
 
 const updateSender = mongoose.Schema(
+
     {
 
+
         Update:{
-            type:String,
+            type:Array,
             required:true
         },
         SID:{
@@ -16,6 +18,7 @@ const updateSender = mongoose.Schema(
             required:true,
             default:0
         }, 
+        
 
     },
     {
