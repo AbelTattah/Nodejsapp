@@ -7,8 +7,8 @@ const Studentupdate =require('./models/studentUpdate')
 const timetable = require('./models/timetableModel')
 const Updatte = require('./models/updattemodel')
 const Buddy = require('./models/buddyModel')
-const UpdateReciever = require('./models/updateReciever')
-const UpdateSender = require('./models/updateSender')
+const UpdateRecieverr = require('./models/updateRecieverr')
+const UpdateSenderr = require('./models/updateSenderr')
 
 
 //routes
@@ -176,7 +176,7 @@ res.status(200).json(updatte);
 app.post ('/updateSend', async(req,res) =>
 {
    try {
-  const updatesend = await UpdateSender.create(req.body)
+  const updatesend = await UpdateSenderr.create(req.body)
   res.status(200).json(updatesend);
    } catch (error) {
     console.log(error.message);
@@ -186,7 +186,7 @@ app.post ('/updateSend', async(req,res) =>
 
 app.get('/updateSender',async(req,res)=>{
     try{
-const updatesend = await UpdateSender.find({});
+const updatesend = await UpdateSenderr.find({});
 res.status(200).json(updatesend);
     }
     catch (error) {
@@ -197,7 +197,7 @@ res.status(200).json(updatesend);
 app.delete('/updateSender/:id',async(req,res)=>{
     try {
         const {id} = req.params;
-        const product = await UpdateSender.findByIdAndDelete(id);
+        const product = await UpdateSenderr.findByIdAndDelete(id);
         if(!product){
             return res.status(404).json({message:`cannot find product${id}`})
         }
@@ -213,7 +213,7 @@ app.delete('/updateSender/:id',async(req,res)=>{
 app.post ('/updateRecieve', async(req,res) =>
 {
    try {
-  const updaterecieve = await UpdateReciever.create(req.body)
+  const updaterecieve = await UpdateRecieverr.create(req.body)
   res.status(200).json(updaterecieve);
    } catch (error) {
     console.log(error.message);
@@ -223,7 +223,7 @@ app.post ('/updateRecieve', async(req,res) =>
 
 app.get('/updateReciever',async(req,res)=>{
     try{
-const updaterecieve = await UpdateReciever.find({});
+const updaterecieve = await UpdateRecieverr.find({});
 res.status(200).json(updaterecieve);
     }
     catch (error) {
@@ -234,7 +234,7 @@ res.status(200).json(updaterecieve);
 app.delete('/updateReciever/:id',async(req,res)=>{
     try {
         const {id} = req.params;
-        const product = await UpdateReciever.findByIdAndDelete(id);
+        const product = await UpdateRecieverr.findByIdAndDelete(id);
         if(!product){
             return res.status(404).json({message:`cannot find product${id}`})
         }

@@ -4,10 +4,8 @@ const mongoose = require('mongoose')
 
 
 
-const updateSender = mongoose.Schema(
-
+const updateRecieverr = mongoose.Schema(
     {
-
 
         Update:{
             type:Array,
@@ -18,7 +16,6 @@ const updateSender = mongoose.Schema(
             required:true,
             default:0
         }, 
-        
 
     },
     {
@@ -29,5 +26,5 @@ const updateSender = mongoose.Schema(
 
 
 
-const UpdateSender = mongoose.model('updatesend',updateSender);
-module.exports =UpdateSender;
+const UpdateRecieverr = mongoose.model('updatesend',updateRecieverr);
+module.exports =UpdateRecieverr;
