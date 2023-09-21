@@ -173,7 +173,7 @@ res.status(200).json(updatte);
 
 
 //Update Sender
-app.post ('/updateSender', async(req,res) =>
+app.post ('/updateSend', async(req,res) =>
 {
    try {
   const updatesend = await UpdateSender.create(req.body)
@@ -194,7 +194,7 @@ res.status(200).json(updatesend);
     }
 })
 
-app.delete('/updatesender/:id',async(req,res)=>{
+app.delete('/updateSender/:id',async(req,res)=>{
     try {
         const {id} = req.params;
         const product = await UpdateSender.findByIdAndDelete(id);
@@ -210,7 +210,7 @@ app.delete('/updatesender/:id',async(req,res)=>{
 
 //Update Reciever
 
-app.post ('/updateReciever', async(req,res) =>
+app.post ('/updateRecieve', async(req,res) =>
 {
    try {
   const updaterecieve = await UpdateReciever.create(req.body)
@@ -231,7 +231,7 @@ res.status(200).json(updaterecieve);
     }
 })
 
-app.delete('/updatereciever/:id',async(req,res)=>{
+app.delete('/updateReciever/:id',async(req,res)=>{
     try {
         const {id} = req.params;
         const product = await UpdateReciever.findByIdAndDelete(id);
