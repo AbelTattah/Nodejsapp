@@ -222,6 +222,21 @@ async(req,res)=> {
     }
 }
 )
+app.put('/updateS/:SName',
+async(req,res)=> {
+    try {
+        const {SName} =req.params;
+        const updatte = await UpdateS.findByIdAndUpdate(SName,req.body) 
+        if(!updatte) {
+            return res.status(404).json({message:`Cannot find Name :${SName}`})
+        }
+        const updattee =  await UpdateS.findById(SName);
+        res.status(200).json(updattee)
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+)
 
 
 //Update Reciever
@@ -260,15 +275,15 @@ app.delete('/updateR/:id',async(req,res)=>{
     }
 })
 
-app.put('/updateR/id:',
+app.put('/updateR/:SName',
 async(req,res)=> {
     try {
-        const {id} =req.params;
-        const updatte = await UpdateR.findByIdAndUpdate(id,req.body) 
+        const {SName} =req.params;
+        const updatte = await UpdateR.findByIdAndUpdate(SName,req.body) 
         if(!updatte) {
-            return res.status(404).json({message:`Cannot find Name`})
+            return res.status(404).json({message:`Cannot find Name :${SName}`})
         }
-        const updattee =  await UpdateR.findById(id);
+        const updattee =  await UpdateR.findById(SName);
         res.status(200).json(updattee)
     } catch (error) {
         res.status(500).json({message:error.message})
