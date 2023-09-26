@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Product = require('./models/productModel')
 const Student = require('./models/studentModel')
 const Studentupdate =require('./models/studentUpdate')
-const timetable = require('./models/timetableModel')
+const timetables = require('./models/timetableModel')
 const Updatte = require('./models/updattemodel')
 const Buddy = require('./models/buddyModel')
 const UpdateR = require('./models/upR')
@@ -128,7 +128,7 @@ app.get('/studentupdate',async(req,res)=>{
 app.post ('/timetable', async(req,res) =>
 {
    try {
-  const timetable = await timetable.create(req.body)
+  const timetable = await timetables.create(req.body)
   res.status(200).json(timetable);
    } catch (error) {
     console.log(error.message);
@@ -138,7 +138,7 @@ app.post ('/timetable', async(req,res) =>
 
 app.get('/timetables',async(req,res)=>{
     try{
-const timetable = await timetable.find({});
+const timetable = await timetables.find({});
 res.status(200).json(timetable);
     }
     catch (error) {
