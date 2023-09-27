@@ -347,7 +347,16 @@ app.delete('/updattes/:id',async(req,res)=>{
 
 
 
-
+app.post ('/buddyy', async(req,res) =>
+{
+   try {
+  const buddy = await Buddy.create(req.body)
+  res.status(200).json(buddy);
+   } catch (error) {
+    console.log(error.message);
+    res.status(500).json({message:error.message})
+   }
+})
 
 app.get('/buddy',async(req,res)=>{
     try{
@@ -370,16 +379,7 @@ app.delete('/buddy/:id',async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
-app.post ('/buddyy', async(req,res) =>
-{
-   try {
-  const updaterecieve = await Buddy.create(req.body)
-  res.status(200).json(updaterecieve);
-   } catch (error) {
-    console.log(error.message);
-    res.status(500).json({message:error.message})
-   }
-})
+
 
 
 
