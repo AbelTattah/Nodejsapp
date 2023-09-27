@@ -370,7 +370,7 @@ app.delete('/buddy/:id',async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
-app.post ('/buddy', async(req,res) =>
+app.post ('/buddyy', async(req,res) =>
 {
    try {
   const updaterecieve = await Buddy.create(req.body)
