@@ -9,7 +9,7 @@ const Updatte = require('./models/updattemodel')
 const Buddy = require('./models/buddyModel')
 const UpdateR = require('./models/upR')
 const UpdateS = require('./models/upS')
-
+const Sudo  = require('./models/sudoModel')
 
 //routes
 app.use(express.json())
@@ -393,6 +393,27 @@ app.delete('/buddy/:id',async(req,res)=>{
         }
         res.status(200).json(product);
     } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+})
+
+//Sudo Users
+app.post ('/sudo', async(req,res) =>
+{
+   try {
+  const sudo = await Sudo.create(req.body)
+  res.status(200).json(sudo);
+   } catch (error) {
+    console.log(error.message);
+    res.status(500).json({message:error.message})
+   }
+})
+app.get('/sudo',async(req,res)=>{
+    try{
+const sudo = await Sudo.find({});
+res.status(200).json(sudo);
+    }
+    catch (error) {
         res.status(500).json({message:error.message})
     }
 })
