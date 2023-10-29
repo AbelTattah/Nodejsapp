@@ -207,7 +207,7 @@ app.delete('/updateS/:id',async(req,res)=>{
     }
 })
 
-app.put('/updateS/id:',
+app.put('/updateS/:id',
 async(req,res)=> {
     try {
         const {id} =req.params;
@@ -222,6 +222,23 @@ async(req,res)=> {
     }
 }
 )
+app.put('/updateSs',
+async(req,res)=> {
+    try {
+        const updatte = await UpdateS.updateMany(req.body) 
+        if(!updatte) {
+            return res.status(404).json({message:`Cannot find Name`})
+        }
+        const updattee =  await UpdateS.findById(id);
+        res.status(200).json(updattee)
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+)
+
+
+
 app.put('/updateS/:SName',
 async(req,res)=> {
     try {
